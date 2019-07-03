@@ -1,0 +1,140 @@
+﻿@model Tuple<IEnumerable<Miao_studio.Models.input>, Miao_studio.Models.SearchInfo>
+@{
+    ViewBag.Title = "InputResult";
+    decimal totalAmount = 0;
+    string begin = "";
+    string end = "";
+    if (Model.Item2.begin != null)
+    {
+        begin = Model.Item2.begin.Value.ToString("yyyy-MM-dd");
+    }
+    if (Model.Item2.end != null)
+    {
+        end = Model.Item2.end.Value.ToString("yyyy-MM-dd");
+    }
+}
+
+<h2>入库记录查询</h2>
+<br />
+
+
+<form action="/Stock/InputResult" method="get" accept-charset="UTF-8">
+    <div class="form-group">
+        <label class="control-label col-md-2">入库单编号：</label>
+        <input name="id" class="form-control" value="@Model.Item2.id" />
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">名称：</label>
+        <input name="name" class="form-control" value="@Model.Item2.name" />
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">型号：</label>
+        <input name="type" class="form-control" value="@Model.Item2.type" />
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">供应商：</label>
+        <input name="provider" class="form-control" value="@Model.Item2.project" />
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">开始时间：</label>
+        <input type="date" name="begin" class="form-control" value="@begin" />
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">结束时间：</label>
+        <input type="date" name="end" class="form-control" value="@end" />
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2"></label>
+        <input type="submit" value="查询" class="btn btn-default form-control" style="background-color:skyblue" />
+    </div>
+</form>
+
+<table class="table">
+    <tr>
+        <th>
+            <label>入库单编号</label>
+        </th>
+        <th>
+            <label>名称</label>
+        </th>
+        <th>
+            <label>型号</label>
+        </th>
+        <th>
+            <label>供应商</label>
+        </th>
+        <th>
+            <label>日期</label>
+        </th>
+        <th>
+            <label>操作人</label>
+        </th>
+        <th>
+            <label>数量</label>
+        </th>
+        <th>
+            <label>单位</label>
+        </th>
+        <th>
+            <label>单价</label>
+        </th>
+        <th>
+            <label>总金额</label>
+        </th>
+        <th>
+            <label>操作</label>
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Item1)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.provider)
+        </td>
+        <td>
+            <p>@item.time.ToLongDateString()</p>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._operator)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.unit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            <p>￥@(item.price * item.number)</p>
+        </td>  
+        <td>
+            <button class="btn btn-default" style="background-color:red" onclick="del('@item.Id.ToString()')">删除</button>
+        </td>
+    </tr>
+        totalAmount += item.price * item.number;
+    }
+
+</table>
+
+<h2>总计：￥@totalAmount</h2>
+
+<script>
+    function del(id){
+        if (confirm("确认删除吗？")) {
+            window.location = '/Stock/InputDelete?id=' + id.toString();
+        }
+    }
+</script>
+

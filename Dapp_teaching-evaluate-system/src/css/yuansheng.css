@@ -1,0 +1,218 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    background-color: gainsboro;
+}
+header {
+    height: 50px;
+    background-color: #eee;
+}
+header section {
+    margin: 0 auto;
+    width: 40%;
+}
+
+header section label {
+    float: left;
+    line-height: 50px;  /*设置line-height和包含块高度一致，以实现行内元素垂直居中*/
+    font-size: 20px;
+}
+
+#add_list {
+    float: right;
+    margin-top: 11px;
+    width: 60%;
+    height: 24px;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 black;
+    font-size: 18px;
+    text-indent: 10px;
+}
+
+h1 {
+    position: relative;
+}
+
+h1 span,h1 button {
+    position: absolute;
+    top: 1px;
+    right: 5px;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border-radius: 28px;    /*创建圆形标记*/
+    line-height: 9px;
+    font-size: 22px;
+    color: red;
+    font-weight: bolder;
+    text-align: center;
+    background: #E6E6FA;
+}
+
+.content {
+    width: 50%;
+    left: 32%;
+    position: absolute;
+}
+
+li {
+    position: relative;
+    margin-bottom: 10px;
+    border-radius: 0px;
+    padding: 0 10px;
+    height: 34px;
+    box-shadow: 0 1px 0 black;
+    line-height: 32px;
+    background-color: #ffffff;
+    list-style: none;
+}
+
+ol li input {
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+p{
+    margin: 0;
+}
+ol li p {
+    display: inline;
+    margin-left: 35px;
+}
+
+ol li p input{
+    top: 5px;
+    margin-left: 35px;
+    width: 70%;
+    height: 14px;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+ol li div {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: inline-block;
+    border: 1px;
+    font-size: 32px;
+    line-height: 10px;
+    color: red;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+#clear {
+    width: 100px;
+    margin: 0 auto;
+}
+
+#clearbutton {
+    border-color: red;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 yellow;
+    cursor: pointer;
+}
+
+button h3{
+    font-size: 13px;
+    line-height: 13px;
+}
+
+#adddiv{ 
+    visibility: hidden; 
+    left: 10%;
+    top: 20%;
+    width: 530px;
+    height: 390px;
+    overflow: hidden; 
+    position: absolute; 
+} 
+#requdiv{
+    visibility: hidden; 
+    left: 10%;
+    top: 20%;
+    width: 450px;
+    height: 400px;
+    overflow: hidden; 
+    position: absolute; 
+}
+
+.tianjia{
+    margin: 8px 15px;
+}
+
+.item{
+    margin: 7.5px 0;
+    right: 3%;
+    top: 10%;
+}
+#login{
+    position: absolute; 
+    margin: 8px 0px;
+    left: 90%;
+}
+#ev{
+    visibility: hidden; 
+    left: 40%;
+    top: 20%;
+    width: 550px;
+    height: 400px;
+    overflow: hidden; 
+    position: absolute; 
+}
+#evname{
+    margin: 0px; 
+}
+#info{
+    right: 3%;
+    top: 10%;
+    width: 250px;
+    height: 400px;
+    position: absolute; 
+}
+.chuangkou {
+   word-break:break-all; 
+}
+.gongshi {
+    left: 3%;
+    top: 10%;
+    width: 500px;
+    height: 380px;
+    position: absolute; 
+}
+.wenzi {
+   margin: -20px 20px 5px 20px; 
+}
+.wenzi1 {
+   margin: 5px 10px -20px 10px; 
+}
+.wenzi2 {
+   margin: -30px 10px 0px 10px; 
+}
+.wenzi3 {
+   margin: 5px 20px 20px 200px; 
+}
+.yonghu {
+    background-color: black;
+}
+.text-gongshi {
+    margin: -50px 0px 0px 30px; 
+    width: 450px;
+    height: 280px;
+}
+#gs2 {
+    visibility: hidden; 
+    overflow: hidden; 
+    border-radius: 20px;
+}
+#gs1 {
+    border-radius: 20px; 
+}
+#bili {
+    top: 55%;
+}

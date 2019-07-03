@@ -1,0 +1,161 @@
+﻿@model IEnumerable<Miao_studio.Models.stock>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>库存</h2>
+
+<p>
+    <a href="/Stock/Input">新增入库</a>    
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            <label>名称</label>
+        </th>
+        <th>
+            <label>型号</label>
+        </th>
+        <th>
+            <label>单位</label>
+        </th>
+        <th>
+            <label>库存</label>
+        </th>
+        <th>
+            <label>总金额</label>
+        </th>
+        <th>
+            <label>操作</label>
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    if(item.stock1!=0)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stock1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+            <td>
+                <button class="btn btn-default" onclick="output(@item.id)">出库</button>
+                <button class="btn btn-default" onclick="input('@item.name.ToString()','@item.type.ToString()','@item.unit.ToString()')">入库</button>
+                <button class="btn btn-default" onclick="detail(@item.id)">查看库存明细</button>
+            </td>
+        </tr>
+    }
+    
+    
+}
+
+    </table>
+
+<script>
+
+    function detail(id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", "@Url.Action("StockDetail","Stock")", false);
+        var data = new FormData();
+        data.append("id", id.toString());        
+        xhr.send(data);
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+            alert(xhr.responseText);
+            window.location.reload();
+        } else {
+            alert("Request was unsuccessful: " + xhr.status);
+        }
+    }
+
+    function input(name,type,unit) {
+        var number;
+        var price;
+        var provider;
+        number = prompt("请输入入库数量", "1");
+        if (number == null) {
+            return;
+        }
+        var num = parseInt(number);
+        if ((isNaN(number)) || (num <= 0)) {
+            alert("输入不合法");
+            return;
+        }
+        price = prompt("请输入单价");
+        if (price == null) {
+            return;
+        }
+        var num = parseInt(price);
+        if ((isNaN(price)) || (num <= 0)) {
+            alert("输入不合法");
+            return;
+        }
+        var provider = prompt("请输入供应商");
+        if (provider == null) {
+            return;
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", "@Url.Action("Input","Stock")", false);
+        var data = new FormData();
+        data.append("name", name.toString());
+        data.append("type", type.toString());
+        data.append("number", number);
+        data.append("price", price);
+        data.append("time", "@System.DateTime.Now.ToString("d")");
+        data.append("provider", provider);
+        data.append("unit", unit.toString());
+        xhr.send(data);
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+            window.location.reload();
+        } else {
+            alert("Request was unsuccessful: " + xhr.status);
+        }
+    }
+
+    function output(id) {
+        var number;
+        var project;
+        number = prompt("请输入出库数量", "1");
+        if (number == null) {            
+            return;
+        }
+        var num = parseInt(number);
+        if ((isNaN(number)) || (num <= 0)) {
+            alert("输入不合法");
+            return;
+        }
+        project = prompt("请输入工程名称");
+        if (project == null) {
+            return;
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", "@Url.Action("Output","Stock")", false);
+        var data = new FormData();
+        data.append("Id", id.toString());
+        data.append("number", num.toString());
+        data.append("project", project)
+        xhr.send(data);
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+            alert(xhr.responseText);
+            window.location.reload();
+        } else {
+            alert("Request was unsuccessful: " + xhr.status);
+        }
+    }
+</script>
+
+

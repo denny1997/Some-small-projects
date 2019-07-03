@@ -1,0 +1,11 @@
+package util;
+
+public enum RequestType {
+	LOGIN,	
+	CONNET_ROOM_SERVER,
+	CREATE_ROOM,
+	JOIN_ROOM,
+	ASK_FOR_CHANGING,
+	UPLOAD_UPDATION,
+	CUT_CONNECT
+}

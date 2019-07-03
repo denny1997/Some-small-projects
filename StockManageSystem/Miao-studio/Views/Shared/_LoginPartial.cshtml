@@ -1,0 +1,17 @@
+﻿@if (Session["user"]!=null)
+{
+    
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="/User/Index">你好,@Session["user"].ToString()!</a>
+        </li>
+        <li><a href="/User/Logout">注销</a></li>
+    </ul>
+    
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">      
+        <li>@Html.ActionLink("登录", "Login", "User", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

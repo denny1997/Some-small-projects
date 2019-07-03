@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>您好，@Session["user"].ToString()</h2>
+<br />
+<img src="~/image/stock.png" style="margin-left:10px; margin-right:40px; cursor:pointer" onclick="window.location = '/Stock/Index'" onmouseover="document.getElementById('one').style.color = 'red'" onmouseout="document.getElementById('one').style.color = 'black'" />
+<img src="~/image/output.png" style="margin-left:40px; margin-right:40px; cursor:pointer" onclick="window.location = '/Stock/OutputResult'" onmouseover="document.getElementById('two').style.color = 'red'" onmouseout="document.getElementById('two').style.color = 'black'"/>
+<img src="~/image/input.png" style="margin-left:40px; margin-right:40px; cursor:pointer" onclick="window.location = '/Stock/InputResult'" onmouseover="document.getElementById('three').style.color = 'red'" onmouseout="document.getElementById('three').style.color = 'black'"/>
+<img src="~/image/stockResearch.png" style="margin-left:40px; margin-right:10px; cursor:pointer" onclick="window.location = '/Stock/StockResult?begin=@System.DateTime.Now.ToString("yyyy-MM")&end=@System.DateTime.Now.ToString("yyyy-MM")'" onmouseover="document.getElementById('four').style.color = 'red'" onmouseout="document.getElementById('four').style.color = 'black'"/>
+<br />
+<br />
+<h2 style="float:left; margin-left:50px; margin-right:60px" id="one">查看库存</h2>
+<h2 style="float:left; margin-left:60px; margin-right:60px" id="two">查看出库记录</h2>
+<h2 style="float:left; margin-left:60px; margin-right:100px" id="three">查看入库记录</h2>
+<h2 id="four">库存统计数据</h2>
+

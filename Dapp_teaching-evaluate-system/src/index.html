@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todolist-prime</title>
+    <link rel="stylesheet" href="css/yuansheng.css">
+    <!-- CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap.css" media="screen">
+    <!-- Google Fonts -->
+    <link href='http://f`onts.useso.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+    <header id="top">
+        <section>
+            <label for="add_list">浙江大学教学评价系统</label>
+            
+        </section>
+        <section id="login">
+                <button type="reset" class="btn btn-danger" onclick="App.logout()">注销</button>
+                <button type="submit" class="btn btn-success" onclick="App.login()">登录</button>
+            </section>
+    </header>
+
+    <!-- 用户info section -->
+    <div class="col-lg-4 " id="info">
+        <div class="bs-component">
+            <div class="list-group chuangkou ">
+                <span href="#" class="active list-group-item  ">
+                    用户
+                </span>
+                <span href="#" class="list-group-item">地址：<span  id="ueser1" onclick="edit('ueser1')">未登录</span>
+                </span>
+                <span href="#" class="list-group-item">权限：<span id="ueser2" onclick="edit('ueser2')">请登录</span>
+                <a id="repower" href="#" class="btn btn-success btn-lg tianjia" onclick="App.show_add('requdiv')" style="display:none">申请权限</a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- add section -->
+    <div class="content">
+        <div class="item">
+            <div class="col-xs-12 smart-margin-bottom-30 item">
+              <button href="#" class="btn btn-block btn-lg btn-info" id="butt1" onclick="App.show('box','butt1')">教学评价记录</button>
+            </div> 
+            <section id="box" style="display:none">
+                <p class="bs-component">
+                    <a href="#" class="btn btn-success btn-lg tianjia" onclick="App.show_add('adddiv')">添加评价条目</a>
+                </p>
+
+                <div class="msf-warp">
+                    <div class="container">
+                    </div>
+                </div>
+                <table  class="table table-striped table-responsive">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>教师姓名</th>
+                        <th>教学评分</th>
+                        <th>记录数</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody id="todolist">
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        
+        <div class="item">
+            <div class="col-xs-12 smart-margin-bottom-20 item">
+              <button href="#" class="btn btn-block btn-lg btn-info" id="butt2" onclick="App.show('box2','butt2')">评价权限名单</button>
+            </div>
+            <section id="box2" style="display:none">
+                <table  class="table table-striped table-responsive">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>姓名</th>
+                        <th>年级</th>
+                        <th>学院</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody id="rightlist">
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        
+
+        <div class="item">
+            <div class="col-xs-12 smart-margin-bottom-20 item">
+              <button href="#" class="btn btn-block btn-lg btn-info" id="butt3" onclick="App.show('box3','butt3')">权限请求名单</button>
+            </div>
+            <section id="box3" style="display:none">
+                <p class="bs-component">
+                    <a href="#" class="btn btn-success btn-lg tianjia" onclick="App.show_add('requdiv')">申请权限</a>
+
+                </p>
+                <div class="container">
+                    <span id="mig" type="text"></span>
+                </div>
+                <table  class="table table-striped table-responsive">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>申请人</th>
+                        <th>年级</th>
+                        <th>学院</th>
+                        <th>备注</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody id="requlist">
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        
+          
+    <div class="bs-docs-section">
+        <div id="adddiv" class="well bs-component">
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>添加</legend>
+                    <div class="form-group">
+                        <label for="name" class="col-lg-2 control-label">教师姓名</label>
+
+                        <div class="col-lg-10">
+                            <input class="form-control" id="name" placeholder="教师姓名" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">教学评价</label>
+                        <div class="col-lg-10">
+                            <select class="form-control" id="age">
+                                <option selected="selected">--</option>
+                                <option value="-1">差评</option>
+                                <option value="0">中评</option>
+                                <option value="1">好评</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">评价权重</label>
+                        <div class="col-lg-10">
+                            <select class="form-control" id="power">
+                                <option selected="selected">--</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mark" class="col-lg-2 control-label">备注</label>
+
+                        <div class="col-lg-10">
+                            <textarea class="form-control" rows="3" id="mark"></textarea>
+                            <span class="help-block">教学事件经过记录</span>
+                        </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="reset" class="btn btn-default btn-danger" onclick="App.hide_add('adddiv')">取消</button>
+                            <button type="submit" class="btn btn-success" onclick="App.add()">添加</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="bs-docs-section">
+        <div id="requdiv" class="well bs-component">
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>申请</legend>
+                    <div class="form-group">
+                        <label for="newname" class="col-lg-2 control-label">申请人</label>
+
+                        <div class="col-lg-10">
+                            <input class="form-control" id="newname" placeholder="申请人" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">年级</label>
+                        <div class="col-lg-10">
+                            <select class="form-control" id="department">
+                                <option selected="selected">--</option>
+                                <option value="0">大一</option>
+                                <option value="1">大二</option>
+                                <option value="2">大三</option>
+                                <option value="3">大四</option>
+                                <option value="4">研一</option>
+                                <option value="5">研二</option>
+                                <option value="6">博士</option>
+                                <option value="7">博后</option>
+                                <option value="8">其他</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">学院</label>
+                        <div class="col-lg-10">
+                            <select class="form-control" id="job">
+                                <option selected="selected">--</option>
+                                <option value="0">人文学院</option>
+                                <option value="1">信息学院</option>
+                                <option value="2">工学院</option>
+                                <option value="3">理学院</option>
+                                <option value="4">医学院</option>
+                                <option value="5">传媒学院</option>
+                                <option value="6">外语学院</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="note" class="col-lg-2 control-label">备注</label>
+
+                        <div class="col-lg-10">
+                            <textarea class="form-control" rows="3" id="note"></textarea>
+                            <span class="help-block">申请原因</span>
+                        </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button type="reset" class="btn btn-danger" onclick="App.hide_add('requdiv')">取消</button>
+                            <button type="submit" class="btn btn-success" onclick="App.request()">申请</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="bs-docs-section">
+        <div class="row">
+            <div id="ev" class="well bs-component">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <legend>记录详情</legend>
+                        <h3 id="evname"></h3>
+                        <table  class="table table-striped table-responsive">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>教学评分</th>
+                                <th>权重</th>
+                                <th>备注</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="evlist">
+                            </tbody>
+                        </table>
+                    
+                        <div class="form-group ev_button">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="reset" class="btn btn-danger" onclick="App.hide_add('ev')">取消</button>
+                                <button type="submit" class="btn btn-success" onclick="App.show_add('adddiv');App.hide_add('ev');">添加</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="bili" class="gongshi">
+    <h3>教学评分统计</h3>
+    <div class="smart-body">
+    <p class="text-left">好评（评分>0）</p>
+        <div class="progress progress-striped active animation-lg">
+            <div id="bili1" class="progress-bar progress-bar-info six-sec-ease-in-out" aria-valuetransitiongoal="75" style="width: 0%;"> 
+            </div>
+        </div>
+    </div>
+    <div class="smart-body">
+    <p class="text-left">中评（评分=0）</p>
+        <div class="progress progress-striped active animation-lg">
+            <div id="bili2" class="progress-bar progress-bar-danger six-sec-ease-in-out" aria-valuetransitiongoal="75" style="width: 0%;">
+            </div>
+        </div>
+    </div>
+    <div class="smart-body">
+    <p class="text-left">差评（评分<0） </p>
+        <div class="progress progress-striped active animation-lg">
+            <div id="bili3" class="progress-bar progress-bar-success six-sec-ease-in-out" aria-valuetransitiongoal="75" style="width: 0%;">
+            </div>
+        </div>
+    </div>
+</div>
+<img src="bg.jpg" width="550px" height="400px" style="position:absolute; left:40px; top:65px; " />
+<img src="aa.jpg" width="300px" height="300px" style="position:absolute; left:1575px; top:300px; " />
+
+    <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="js/web3.min.js"></script>
+
+    <script src="js/truffle-contract.js"></script>
+
+    <script src="js/app.js"></script>
+
+    <script src="js/todolist-prime.js"></script>
+</body>
+</html>
