@@ -1,0 +1,5 @@
+﻿  API.cpp
+c:\users\lutianchi\desktop\minisql_pro\minisql_pro\record_manager.h(7): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+c:\users\lutianchi\desktop\minisql_pro\minisql_pro\api.cpp(175): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\lutianchi\desktop\minisql_pro\minisql_pro\api.cpp(313): warning C4018: “<”: 有符号/无符号不匹配
+  minisql_pro.vcxproj -> C:\Users\lutianchi\Desktop\minisql_pro\Debug\minisql_pro.exe
